@@ -16,3 +16,39 @@ var notesMoyennes = notes.map((note) => {
 notesMoyennes.forEach((note) => {
     console.log(`Étudiant ${notesMoyennes.indexOf(note) + 1}: ${note}`);
 });
+
+var reussite = [];
+var echec = [];
+notesMoyennes.forEach((note) => {
+    if(note >= 60){
+        reussite.push(notesMoyennes.indexOf(note) + 1);
+    } else{
+        echec.push(notesMoyennes.indexOf(note) + 1);
+    }
+})
+console.log(`Étudiants ayant réussi : ${reussite}`);
+console.log(`Étudiants en situation d'échec : ${echec}`);
+
+var moyenneOutils = 0;
+var moyenneFonct = 0;
+var moyenneDW = 0;
+var moyenneProg = 0;
+notes.forEach((note) => {
+    moyenneOutils += note[0];
+    moyenneFonct += note[1];
+    moyenneDW += note[2];
+    moyenneProg += note[3];
+});
+moyenneOutils = moyenneOutils / 4;
+moyenneFonct = moyenneFonct / 4;
+moyenneDW = moyenneDW / 4;
+moyenneProg = moyenneProg / 4;
+moyenneCours = [moyenneOutils, moyenneFonct, moyenneDW, moyenneProg];
+moyenneCours = moyenneCours.map((moyenne) => {
+    return Math.round(moyenne);
+})
+console.log("Moyenne des cours:");
+console.log(`Outils Informatiques : ${moyenneCours[0]}%`);
+console.log(`Fonctionnement de l'ordinateur : ${moyenneCours[1]}%`);
+console.log(`Design Web : ${moyenneCours[2]}%`);
+console.log(`Programmation 1 : ${moyenneCours[3]}%`);

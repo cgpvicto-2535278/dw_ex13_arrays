@@ -6,12 +6,12 @@ var notes = [
 ];
 console.log("Résultats des étudiants");
 notes.forEach((note) => {
-    console.log(`Étudiant ${notes.indexOf(note) + 1}: ${note[0]} - ${note[1]} - ${note[2]} - ${note[3]}`);
+    console.log(`Étudiant ${notes.indexOf(note) + 1}: ${note.join(" - ")}`);
 });
 
 console.log("Moyenne des étudiants");
 var notesMoyennes = notes.map((note) => {
-    return Math.ceil((note[0] + note[1] + note[2] + note[3]) / 4);
+    return Math.round(note.reduce((total, resultat) => total + resultat) / note.length);
 })
 notesMoyennes.forEach((note) => {
     console.log(`Étudiant ${notesMoyennes.indexOf(note) + 1}: ${note}`);
@@ -52,3 +52,10 @@ console.log(`Outils Informatiques : ${moyenneCours[0]}%`);
 console.log(`Fonctionnement de l'ordinateur : ${moyenneCours[1]}%`);
 console.log(`Design Web : ${moyenneCours[2]}%`);
 console.log(`Programmation 1 : ${moyenneCours[3]}%`);
+
+
+//autre moyen
+let moyenneO = notes.reduce((total, note) => total + note[0], 0) / notes.length;
+let moyenneF = notes.reduce((total, note) => total + note[1], 0) / notes.length;
+let moyenneD = notes.reduce((total, note) => total + note[2], 0) / notes.length;
+let moyenneP = notes.reduce((total, note) => total + note[3], 0) / notes.length;
